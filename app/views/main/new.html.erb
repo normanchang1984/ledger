@@ -1,0 +1,27 @@
+<%= form_for @portfolio, :url => stocks_path do |f| %>
+
+<div class="form-group">
+<%= f.label :name, "Name" %>
+<%= f.text_field :name, :class=>"form-control" %>
+</div>
+<div class="form-group">
+<%= f.label :name, "Buying Price" %>
+<%= f.text_area :orgprice, :class=>"form-control" %>
+</div>
+<div class="form-group">
+<%= f.label :description, "Number of Shares" %>
+<%= f.text_area :shares, :class=>"form-control" %>
+</div>
+<div class="form-group">
+<%= f.label :description, "Currrent Price" %>
+<%= f.text_area :curprice, :class=>"form-control" %>
+</div>
+<div class="form-group">
+<%= f.label :description, "Gain" %>
+<%= f.text_area :profit, :class=>"form-control" %>
+</div>
+
+
+
+<%= f.submit "Create" %>
+<% end %>
