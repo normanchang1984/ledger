@@ -1,20 +1,76 @@
 <h1>My Stock Portfolio</h1>
 
-<table>
-<% @portfolios.each do |p|%>
+<table class="table col-md-12">
   <tr>
+    <th>Stock Names</th>
+    <th>Purchasing Price</th>
+    <th># of Shares</th>
+    <th>Current Price</th>
+    <th>Monetary Gain</th>
+    <th>Actions</th>
+
+  </tr>
+
+
+  <% @portfolios.each do |p|%>
+    <tr>
     <td>
-    <%=p.name%>
-
-    <%=link_to "Show", stock_path(p)%>
-    <%=link_to "Edit", edit_stock_path(p)%>
-    <%=link_to "Delete", stock_path(p), :method => :delete %>
-
+      <%=p.name%>
     </td>
+    <td>
+      <%=p.orgprice%>
+     </td>
+     <td>
+      <%=p.shares%>
+     </td>
+     <td>
+      <%=p.curprice%>
+     </td>
+     <td>
+      <%=p.profit%>
+     </td>
+     <td>
+      <%#=link_to "Show", stock_path(p), :class => "btn btn-default"%>
+      <%=link_to "Edit", edit_stock_path(p), :class => "btn btn-primary"%>
+      <%=link_to "Delete", stock_path(p), :method => :delete, :class => "btn btn-danger" %>
+
+      </td>
     </tr>
     <%end%>
 
 </table>
+
+<div class="col-md-6">
+  <%= form_for @portfolio, :url => stocks_path do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, :class=>"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, "Buying Price" %>
+    <%= f.text_area :orgprice, :class=>"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "Number of Shares" %>
+    <%= f.text_area :shares, :class=>"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "Currrent Price" %>
+    <%= f.text_area :curprice, :class=>"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "Gain" %>
+    <%= f.text_area :profit, :class=>"form-control" %>
+  </div>
+<%= f.submit "Create" %>
+<% end %>
+</div>
+
+
+
+
+
 <p>
-<%=link_to "Create", new_stock_path%>
+<%#=link_to "Create", new_stock_path%>
 </p>

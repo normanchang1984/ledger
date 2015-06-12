@@ -2,6 +2,8 @@ class MainController < ApplicationController
 
   def index
     @portfolios= Portfolio.all
+    @portfolio=Portfolio.new
+
   end
 
   def new
@@ -11,8 +13,8 @@ class MainController < ApplicationController
   def edit
     #Rails.logger.debug("-------------------------id2----")
     #Rails.logger.debug(params[:id])
-
     @portfolio=Portfolio.find(params[:id])
+    #@portfolio=Portfolio.find(params[:id])
     #Rails.logger.debug("-------------------------id----")
     #Rails.logger.debug(@portfolio.inspect)
   end
